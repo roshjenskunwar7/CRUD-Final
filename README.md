@@ -1,4 +1,3 @@
-@'
 # CRUD-Final — Student Management System
 
 **Author:** Roshjens Kunwar  
