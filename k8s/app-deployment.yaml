@@ -1,0 +1,85 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crud-app
+  namespace: crud-system
+  labels:
+    app: crud-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-app
+  template:
+    metadata:
+      labels:
+        app: crud-app
+    spec:
+      containers:
+        - name: crud-app
+          image: crud-app:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              name: http
+          env:
+            - name: ASPNETCORE_URLS
+              valueFrom:
+                configMapKeyRef:
+                  name: crud-config
+                  key: ASPNETCORE_URLS
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: crud-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: crud-config
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: crud-config
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: crud-secret
+                  key: MARIADB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: crud-secret
+                  key: MARIADB_PASSWORD
+            - name: ConnectionStrings__DefaultConnection
+              value: "Server=$(DB_HOST);Port=$(DB_PORT);Database=$(DB_NAME);User ID=$(DB_USER);Password=$(DB_PASSWORD);"
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 5
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 1000m
+              memory: 512Mi
