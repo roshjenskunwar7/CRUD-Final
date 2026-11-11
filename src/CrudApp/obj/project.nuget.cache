@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "pXzt3Y1rmbM=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Roz07\\Documents\\CRUD-Final\\src\\CrudApp\\CrudApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Roz07\\.nuget\\packages\\mysqlconnector\\2.6.2\\mysqlconnector.2.6.2.nupkg.sha512"
+  ],
+  "logs": []
+}
