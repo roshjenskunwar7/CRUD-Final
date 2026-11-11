@@ -1,0 +1,5 @@
+**/bin/
+**/obj/
+
+k8s/secret.yaml
+.env
