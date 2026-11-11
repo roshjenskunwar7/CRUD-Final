@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">S</div>
+                <span>StudentHub</span>
+            </div>
+
+            <div class="sidebar-menu">
+                <p class="menu-label">MENU</p>
+                <a href="#" class="menu-item active">
+                    <span>▦</span> Dashboard
+                </a>
+                <a href="#students" class="menu-item">
+                    <span>♙</span> Students
+                </a>
+            </div>
+
+            <div class="sidebar-bottom">
+                <div class="profile">
+                    <div class="avatar">SA</div>
+                    <div>
+                        <strong>Administrator</strong>
+                        <small>Admin Account</small>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back! Here's your student overview.</p>
+                </div>
+
+                <div class="topbar-right">
+                    <span class="status-indicator"></span>
+                    <span>System Online</span>
+                </div>
+            </header>
+
+            <!-- Statistics -->
+            <section class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-icon blue">♙</div>
+                    <div>
+                        <p>Total Students</p>
+                        <h2 id="totalStudents">0</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon green">✓</div>
+                    <div>
+                        <p>System Status</p>
+                        <h2>Active</h2>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon purple">▤</div>
+                    <div>
+                        <p>Database</p>
+                        <h2>Connected</h2>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Student Management -->
+            <section class="students-section" id="students">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Student Management</h2>
+                        <p>Manage and organize your student records.</p>
+                    </div>
+
+                    <button class="add-button" id="addStudentBtn">
+                        + Add Student
+                    </button>
+                </div>
+
+                <div class="table-controls">
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search students..."
+                    >
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>PHONE</th>
+                                <th>GRADE</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="studentTableBody">
+                            <tr>
+                                <td colspan="6" class="empty-message">
+                                    Loading students...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </section>
+
+            <footer>
+                StudentHub Management System
+                <span>© 2026</span>
+            </footer>
+
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
